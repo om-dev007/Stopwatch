@@ -6,7 +6,6 @@ const Home = () =>  {
   const [startTime, setStartTime] = useState(0)
 
   useEffect(() => {
-    // cleanup on unmount
     return () => {
       if (intervalId) clearInterval(intervalId)
     }
@@ -14,10 +13,10 @@ const Home = () =>  {
 
   const start = () => {
     if (running) return
-    const localStart = Date.now() - elapsed          // compute local start
-    setStartTime(localStart)                         // store if you want
+    const localStart = Date.now() - elapsed          
+    setStartTime(localStart)                         
     const id = setInterval(() => {
-      setElapsed(Date.now() - localStart)            // use localStart to avoid stale closure
+      setElapsed(Date.now() - localStart)            
     }, 50)
     setIntervalId(id)
     setRunning(true)
